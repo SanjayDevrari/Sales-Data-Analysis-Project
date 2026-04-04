@@ -57,5 +57,45 @@ plt.savefig(
     bbox_inches="tight"
 )
 
+# ------------------------------------------------------------
+# Analysis: Determine the Best-Selling Item Types
+# ------------------------------------------------------------
+
+# Group the dataset by 'Item Type'
+# Calculate the total number of units sold for each item type
+# Sort the results in descending order
+# Select the top 5 best-selling items
+high_saleing_items = (
+    df.groupby("Item Type")["Units Sold"]
+    .sum()
+    .sort_values(ascending=False)
+    .head(5)
+)
+
+# ------------------------------------------------------------
+# Visualization: Bar Chart of Top 5 Best-Selling Items
+# ------------------------------------------------------------
+
+# Create a bar chart to visualize the best-selling item types
+plt.bar(
+    high_saleing_items.index,
+    high_saleing_items.values,
+    color=["red", "blue", "green", "orange", "purple"],
+    edgecolor="black"
+)
+
+# Label the y-axis to represent the number of units sold
+plt.ylabel("Units Sold")
+
+# Label the x-axis to represent item categories
+plt.xlabel("Item Type")
+
+# Save the chart as a high-resolution image
+plt.savefig(
+    "/content/drive/MyDrive/high_saleing_items.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
 # Display the chart
 plt.show()
