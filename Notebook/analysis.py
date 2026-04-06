@@ -97,5 +97,41 @@ plt.savefig(
     bbox_inches="tight"
 )
 
+# ------------------------------------------------------------
+# Analysis: Compare Online vs Offline Sales Performance
+# ------------------------------------------------------------
+
+# Group the dataset by 'Sales Channel' (Online and Offline)
+# Calculate the total number of units sold for each sales channel
+Sales_based_on_channel = df.groupby('Sales Channel')['Units Sold'].sum()
+
+# Print the result to view the total sales by each channel
+print(Sales_based_on_channel)
+
+# ------------------------------------------------------------
+# Visualization: Bar Chart of Sales by Channel
+# ------------------------------------------------------------
+
+# Create a bar chart to compare Online and Offline sales performance
+plt.bar(
+    Sales_based_on_channel.index,   # Sales channels (Online/Offline)
+    Sales_based_on_channel.values,  # Total units sold
+    edgecolor="black",
+    color=["blue", "green"]
+)
+
+# Label the x-axis to represent the sales channels
+plt.xlabel("Sales Channels")
+
+# Label the y-axis to represent the number of units sold
+plt.ylabel("Units Sold")
+
+# Save the chart as a high-resolution image in Google Drive
+plt.savefig(
+    "/content/drive/MyDrive/SalesChannels.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
 # Display the chart
 plt.show()
