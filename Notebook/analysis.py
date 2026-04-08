@@ -168,5 +168,43 @@ plt.savefig(
     bbox_inches="tight"
 )
 
+# ------------------------------------------------------------
+# Analysis: Understand the Relationship Between Cost and Profit
+# ------------------------------------------------------------
+
+# Select the first 100 values from the 'Unit Cost' column
+# This is done to keep the scatter plot clear and avoid overcrowding
+cost = df['Unit Cost'].head(100)
+
+# Select the first 100 values from the 'Total Profit' column
+# These values will be compared against the unit cost
+profit = df['Total Profit'].head(100)
+
+# ------------------------------------------------------------
+# Visualization: Scatter Plot of Cost vs Profit
+# ------------------------------------------------------------
+
+# Create a scatter plot to observe the relationship between cost and profit
+plt.scatter(cost, profit, s=50)
+
+# Add a title to the chart
+plt.title("Relationship Between Cost and Profit")
+
+# Label the x-axis to represent unit cost
+plt.xlabel('Unit Cost')
+
+# Label the y-axis to represent total profit
+plt.ylabel('Total Profit')
+
+# Add grid lines to improve readability of the chart
+plt.grid(True)
+
+# Save the chart as a high-resolution image in Google Drive
+plt.savefig(
+    "/content/drive/MyDrive/Relationship_between_cost_and_profit.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
 # Display the chart
 plt.show()
